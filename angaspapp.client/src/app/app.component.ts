@@ -40,7 +40,19 @@ export class AppComponent implements OnInit {
   onTest() {
     console.log('onTest');
 
-    this.http.post<string>('/WeatherForecast/Test', { id: 132 })
+    this.http.post<string>('/api/WeatherForecast/GetTest', { id: 132 })
+      .subscribe({
+        next: (result) => {
+          console.log('result:', result);
+        },
+        error: err => console.error(err)
+      });
+  }
+
+  onShock() {
+    console.log('onShock');
+
+    this.http.post<string>('/api/WeatherForecast/PostTest', { id: 132 })
       .subscribe({
         next: (result) => {
           console.log('result:', result);

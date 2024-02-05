@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -6,7 +7,7 @@ namespace AngAspApp.Server.Controllers;
 
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class WeatherForecastController : ControllerBase
 {
 
@@ -34,10 +35,16 @@ public class WeatherForecastController : ControllerBase
     .ToArray();
   }
 
-  //[HttpPost(Name = "Test")]
-  [HttpPost]
-  public IActionResult Test(dynamic data)
+  [HttpGet("GetTest")]
+  public IActionResult GetTest()
   {
-    return Ok("Test");
+    return Ok("GetTest");
+  }
+
+  
+  [HttpPost("PostTest")]
+  public IActionResult PostTest(dynamic data)
+  {
+    return Ok("PostTest");
   }
 }
